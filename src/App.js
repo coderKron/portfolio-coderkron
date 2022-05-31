@@ -1,25 +1,26 @@
 import React from 'react';
-import {
-  ChakraProvider,
-  Box,
-  Text,
-  Link,
-  VStack,
-  Code,
-  Grid,
-  theme,
-} from '@chakra-ui/react';
+import { ChakraProvider, theme, Flex, Box } from '@chakra-ui/react';
 import { ColorModeSwitcher } from './ColorModeSwitcher';
-import { Logo } from './Logo';
+
+import Navbar from './components/Navbar';
+import Homepage from './components/Homepage';
+import Portfolio from './components/Portfolio';
+import About from './components/About';
+import ContactForm from './components/ContactForm';
 
 function App() {
   return (
     <ChakraProvider theme={theme}>
-      <Box textAlign="center" fontSize="xl">
-        <Grid minH="100vh" p={3}>
-          <ColorModeSwitcher justifySelf="flex-end" />
-        </Grid>
-      </Box>
+      <Flex flexDirection="column" height="100%" width={'100%'}>
+        <Homepage />
+        <Navbar />
+        <About />
+        <Box position={'fixed'}>
+          <ColorModeSwitcher />
+        </Box>
+        <Portfolio />
+        <ContactForm />
+      </Flex>
     </ChakraProvider>
   );
 }
