@@ -109,11 +109,11 @@ const PersonalDetailsCard = () => (
               </Text>
             </HStack>
           </Wrap>
-          <Box fontSize="sm" noOfLines={3}>
+          <Box fontSize="sm" noOfLines={4}>
             Hi, I am a starting Junior Web Developer. I am very passionate and
             relaxed person. I've build my experience with the help of Ironhack.
             Currently I'm searching for a position as a Junior Front-end
-            developer.
+            developer. At the same time I'm also still building projects
           </Box>
           <Wrap
             shouldWrapChildren
