@@ -23,10 +23,21 @@ export const posts = [
     id: '3',
     title: 'Project 3: Bucketeer',
     excerpt:
-      'My crown jewel (for now). Project 3 is a bucketlist website. Where you can keep track of all things you still have to do.',
+      'My crown jewel (for now). Project 3 is a bucketlist website. Where you can keep track of all things you still have to do. Time is ticking.',
     image: '/images/bucketeer.png',
-    category: 'Design',
+    category:
+      'React.JS, JavaScript, CHAKRA UI, NodeJS, ExpressJS, Axios, REST API',
     url: 'https://bucketeer.netlify.app',
+    publishedAt: 'May 27, 2022',
+  },
+  {
+    id: '4',
+    title: 'Project 4: Portfolio',
+    excerpt:
+      "The Trophy case. I've build it myself. It displays all the projects I have completed (some are in dire need of an update though!).",
+    image: '/images/portfolio.jpeg',
+    category: 'React.JS, JavaScript, JSX',
+    url: 'already',
     publishedAt: 'May 27, 2022',
   },
 ];

@@ -94,7 +94,7 @@ const PersonalDetailsCard = () => (
                 fontWeight="medium"
                 color={useColorModeValue('gray.600', 'gray.300')}
               >
-                <b>3</b> projects completed
+                <b>4</b> projects completed
               </Text>
             </HStack>
 

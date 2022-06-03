@@ -116,6 +116,7 @@ const ContactForm = () => {
               >
                 <label style={{ color: 'white' }}>Name</label>
                 <input
+                  style={{ backgroundColor: 'white' }}
                   value={name}
                   onChange={e => {
                     setName(e.target.value);
@@ -126,6 +127,7 @@ const ContactForm = () => {
                 <br />
                 <label style={{ color: 'white' }}>Email</label>
                 <input
+                  style={{ backgroundColor: 'white' }}
                   value={email}
                   onChange={e => {
                     setEmail(e.target.value);
@@ -136,6 +138,7 @@ const ContactForm = () => {
                 <br />
                 <label style={{ color: 'white' }}>Message</label>
                 <textarea
+                  style={{ backgroundColor: 'white' }}
                   value={message}
                   onChange={e => {
                     setMessage(e.target.value);
