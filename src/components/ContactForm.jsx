@@ -151,7 +151,7 @@ const ContactForm = () => {
                   <Button
                     type="submit"
                     variant={'solid'}
-                    backgroundColor={mode('teal.300')}
+                    backgroundColor={'teal.300'}
                   >
                     Send
                   </Button>
