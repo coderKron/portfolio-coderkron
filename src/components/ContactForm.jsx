@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import emailjs from 'emailjs-com';
 import {
   Avatar,
   Box,
@@ -8,6 +9,7 @@ import {
   Flex,
   FormControl,
   FormHelperText,
+  VStack,
   FormLabel,
   Input,
   InputGroup,
@@ -18,38 +20,48 @@ import {
   StackDivider,
   Text,
   Textarea,
-  Toast,
+  useToast,
 } from '@chakra-ui/react';
-import axios from 'axios';
+
 const ContactForm = () => {
   const [status, setStatus] = useState('Submit');
-  const [topic, setTopic] = useState('');
+  const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [message, setMessage] = useState('');
+  const toast = useToast();
 
-  const handleSubmit = async e => {
+  const sendEmail = e => {
     e.preventDefault();
-    setStatus('Sending...');
-    let details = {
-      topic,
+    const details = {
+      name,
       email,
       message,
     };
-    axios
-      .post(`${process.env.REACT_APP_URL}/api/contact`, details)
-      .then(response => {
-        console.log(response);
+    emailjs
+      .sendForm(
+        'service_q0qihn6',
+        'template_0qcwdfr',
+        e.target,
+        'qMo-JPiN8G_72YjXY'
+      )
+      .then(res => {
+        console.log(res);
+        toast({
+          title: 'Email send',
+          description: 'We will be in touch with you!',
+          status: 'success',
+          duration: 5000,
+          isClosable: true,
+        });
         setEmail('');
-        setTopic('');
+        setName('');
         setMessage('');
-        Toast();
       })
       .catch(error => {
         console.log(error);
       });
-
-    setStatus('Submit');
   };
+
   return (
     <Box backgroundColor={mode('gray.700')} color="white">
       <Container
@@ -93,95 +105,56 @@ const ContactForm = () => {
           </Stack>
           <Divider />
           <Stack spacing="5" divider={<StackDivider />}>
-            <FormControl id="email">
-              <Stack
-                direction={{
-                  base: 'column',
-                  md: 'row',
+            <div>
+              <form
+                onSubmit={sendEmail}
+                style={{
+                  flexDirection: 'column',
+                  display: 'flex',
+                  color: 'black',
                 }}
-                spacing={{
-                  base: '1.5',
-                  md: '8',
-                }}
-                justify="space-between"
               >
-                <FormLabel variant="inline">Email</FormLabel>
-                <Input
-                  type="email"
+                <label style={{ color: 'white' }}>Name</label>
+                <input
+                  value={name}
+                  onChange={e => {
+                    setName(e.target.value);
+                  }}
+                  type="text"
+                  name="name"
+                />
+                <br />
+                <label style={{ color: 'white' }}>Email</label>
+                <input
                   value={email}
                   onChange={e => {
                     setEmail(e.target.value);
                   }}
-                  maxW={{
-                    md: '3xl',
-                  }}
-                  placeholder="someone@someone.com"
+                  type="email"
+                  name="user_email"
                 />
-              </Stack>
-            </FormControl>
-            <FormControl id="topic">
-              <Stack
-                direction={{
-                  base: 'column',
-                  md: 'row',
-                }}
-                spacing={{
-                  base: '1.5',
-                  md: '8',
-                }}
-                justify="space-between"
-              >
-                <FormLabel variant="inline">Topic</FormLabel>
-                <Input
-                  type="text"
-                  maxW={{
-                    md: '3xl',
-                  }}
-                  value={topic}
-                  placeholder="E.G. Wanna collaborate?"
-                  onChange={e => {
-                    setTopic(e.target.value);
-                  }}
-                />
-              </Stack>
-            </FormControl>
-            <FormControl id="bio">
-              <Stack
-                direction={{
-                  base: 'column',
-                  md: 'row',
-                }}
-                spacing={{
-                  base: '1.5',
-                  md: '8',
-                }}
-                justify="space-between"
-              >
-                <Box>
-                  <FormLabel variant="inline">Message</FormLabel>
-                  <FormHelperText mt="0" color="muted">
-                    How can I be of service to you!
-                  </FormHelperText>
-                </Box>
-                <Textarea
+                <br />
+                <label style={{ color: 'white' }}>Message</label>
+                <textarea
+                  value={message}
                   onChange={e => {
                     setMessage(e.target.value);
                   }}
-                  value={message}
-                  maxW={{
-                    md: '3xl',
-                  }}
-                  rows={5}
-                  resize="none"
-                />
-              </Stack>
-            </FormControl>
-
-            <Flex direction="row-reverse">
-              <Button onClick={handleSubmit} variant="ghost">
-                Send
-              </Button>
-            </Flex>
+                  name="message"
+                  cols="20"
+                  rows="5"
+                ></textarea>
+                <Stack alignItems={'center'} marginTop="20px">
+                  <Button
+                    type="submit"
+                    variant={'solid'}
+                    backgroundColor={mode('teal.300')}
+                  >
+                    Send
+                  </Button>
+                </Stack>
+              </form>
+            </div>
           </Stack>
         </Stack>
       </Container>

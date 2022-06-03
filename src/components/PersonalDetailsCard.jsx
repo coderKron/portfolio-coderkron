@@ -8,12 +8,12 @@ import {
   Tag,
   Text,
   useColorModeValue,
-  Link,
   Wrap,
 } from '@chakra-ui/react';
 import * as React from 'react';
 import { HiCash, HiLocationMarker, HiShieldCheck } from 'react-icons/hi';
 import { Card } from './Card';
+import { Link } from 'react-scroll/modules';
 
 const PersonalDetailsCard = () => (
   <Box as="section" bg={useColorModeValue('gray.100', 'blue.800')} py="12">
@@ -36,7 +36,16 @@ const PersonalDetailsCard = () => (
             src="/images/team-picture-ruben.jpeg"
             name="Ruben B Poelen"
           />
-          <Button width="full" colorScheme="blue">
+          <Button
+            style={{ cursor: 'pointer' }}
+            as={Link}
+            activeClass="active"
+            smooth
+            spy
+            to="contact"
+            width="full"
+            colorScheme="blue"
+          >
             Contact me
           </Button>
         </Stack>
@@ -100,10 +109,11 @@ const PersonalDetailsCard = () => (
               </Text>
             </HStack>
           </Wrap>
-          <Box fontSize="sm" noOfLines={2}>
-            Hi, I am a professional Graphic Designer and Web Developer. I am a
-            member of Evolving team [login to view URL] and I have experience of
-            5+ years even before joining this.
+          <Box fontSize="sm" noOfLines={3}>
+            Hi, I am a starting Junior Web Developer. I am very passionate and
+            relaxed person. I've build my experience with the help of Ironhack.
+            Currently I'm searching for a position as a Junior Front-end
+            developer.
           </Box>
           <Wrap
             shouldWrapChildren

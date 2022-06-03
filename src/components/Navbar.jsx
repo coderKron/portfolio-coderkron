@@ -73,6 +73,7 @@ const Navbar = () => {
                   </Button>
                 </ButtonGroup>
                 <HStack>
+                  <ColorModeSwitcher />
                   <Button
                     style={{ cursor: 'pointer' }}
                     as={Link}

@@ -15,9 +15,7 @@ function App() {
         <Homepage />
         <Navbar />
         <About />
-        <Box position={'fixed'}>
-          <ColorModeSwitcher />
-        </Box>
+
         <Portfolio />
         <ContactForm />
       </Flex>
