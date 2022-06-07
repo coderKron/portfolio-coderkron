@@ -70,7 +70,6 @@ const PersonalDetailsCard = () => (
               }}
             >
               <Link
-                as={'a'}
                 target="_blank"
                 href={'https://www.linkedin.com/in/ruben-poelen-10171414a/'}
               >

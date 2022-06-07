@@ -8,6 +8,7 @@ import {
   Square,
   Stack,
   Text,
+  Link,
   useBreakpointValue,
   useColorModeValue as mode,
 } from '@chakra-ui/react';
@@ -144,16 +145,18 @@ const Hobbies = () => (
             ))}
           </Stack>
           <Box width="full" overflow="hidden">
-            <Image
-              maxW="100%"
-              minH={{
-                base: '100%',
-                lg: '560px',
-              }}
-              objectFit="cover"
-              src="/images/dungeons.jpeg"
-              alt="Developer"
-            />
+            <Link as={'a'} target="_blank" href={'https://dnd.wizards.com/'}>
+              <Image
+                maxW="100%"
+                minH={{
+                  base: '100%',
+                  lg: '560px',
+                }}
+                objectFit="cover"
+                src="/images/dungeons.jpeg"
+                alt="Developer"
+              />
+            </Link>
           </Box>
         </Stack>
       </Stack>
