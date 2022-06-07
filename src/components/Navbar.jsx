@@ -8,6 +8,10 @@ import {
   IconButton,
   useBreakpointValue,
   useColorModeValue as mode,
+  Menu,
+  MenuButton,
+  MenuList,
+  MenuItem,
 } from '@chakra-ui/react';
 import { Link } from 'react-scroll/modules';
 import { ColorModeSwitcher } from '../ColorModeSwitcher';
@@ -89,11 +93,47 @@ const Navbar = () => {
                 </HStack>
               </Flex>
             ) : (
-              <IconButton
-                variant="ghost"
-                icon={<FiMenu fontSize="1.25rem" />}
-                aria-label="Open Menu"
-              />
+              <Menu>
+                <MenuButton
+                  as={IconButton}
+                  icon={<FiMenu fontSize="1.25rem" />}
+                />
+                <MenuList>
+                  <MenuItem>
+                    <Link
+                      style={{ cursor: 'pointer' }}
+                      activeClass="active"
+                      smooth
+                      spy
+                      to="about"
+                    >
+                      About me
+                    </Link>
+                  </MenuItem>
+                  <MenuItem>
+                    <Link
+                      style={{ cursor: 'pointer' }}
+                      activeClass="active"
+                      smooth
+                      spy
+                      to="portfolio"
+                    >
+                      Portfolio
+                    </Link>
+                  </MenuItem>
+                  <MenuItem>
+                    <Link
+                      style={{ cursor: 'pointer' }}
+                      activeClass="active"
+                      smooth
+                      spy
+                      to="contact"
+                    >
+                      Contact
+                    </Link>
+                  </MenuItem>
+                </MenuList>
+              </Menu>
             )}
           </HStack>
         </Container>
